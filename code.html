@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Application: A Coding Project By Ansh Desai</title>
+    <title>TacoCat: A Coding Project By Ansh Desai</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
     <!--Navigation Section-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/img/Mark.png" class="d-inline-block align-text-top" width="30" height="24">Application</a>
+            <a class="navbar-brand" href="#"><img src="/img/Mark.png" class="d-inline-block align-text-top" width="30" height="24">TacoCat</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,10 +36,10 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repository</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/AnshD8619/TacoCat">Git Repository</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About Me</a>
+                        <a class="nav-link" target="_blank" href="PortfolioLink">About Me</a>
                     </li>
                 </ul>
             </div>
@@ -48,19 +48,67 @@
     <!--Main Section-->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">THE APPLICATION CODE</h2>
+            <h2 class="border-1 border-bottom border-dark">TacoCat Code</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            alert("ENTER PROGRAM CODE HERE");
+                            function getString(){
+                                check = false;
+                                document.getElementById("alert").classList.add("invisible");
+                                let iString = document.getElementById("userString").value;
+                                iString = iString.toLowerCase();
+                                let regex = /[^a-z0-9]/gi;
+                                iString = iString.replace(regex,"");
+                                let pString = checkString(iString);
+                                if(pString == iString){
+                                    check = true;
+                                }
+                                else{
+                                    check = false;
+                                }
+                                displayResult(check, pString);
+                            }
+                            function checkString(string){
+                                pString = [];
+                                for(index = string.length - 1; index >=0; index--){
+                                    pString += string[index];
+                                } 
+                                return pString;
+                            }
+                            function displayResult(check, string){
+                                if(check == true){
+                                    document.getElementById("check").innerHTML = `Well done! You entered a palindrome!`;
+                                    document.getElementById("msg").innerHTML = `Your string reversed is: ${string}`;
+                                    document.getElementById("alert").classList.remove("invisible");
+                            
+                                }
+                                else{
+                                    document.getElementById("check").innerHTML = `This is not a palindrome!`;
+                                    document.getElementById("msg").innerHTML = `Your string reversed is: ${string}`;
+                                    document.getElementById("alert").classList.remove("invisible");
+                                }
+                            }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>HOW IS THE CODE STRUCTURED</p>
-                    <h5>FUNCTION NAME</h5>
-                    <p>FUNCTION DESCRIPTION</p>
+                    <h5>Code Structure</h5>
+                    
+                    <h5>getString()</h5>
+                    <p>This function gets the inputted value from the user and changes it completely to lower case and replaces all other symbols with a blank space. 
+                    It then calls checkString and if the returned string equals the original string, the boolean condition becomes True. Else, it becomes False. 
+                    It then calls displayResult().</p>
+
+                    <h5>checkString()</h5>
+                    <p>This function runs a for loop from the length of the string - 1 to 0. 
+                    It then adds these values to an empty list pString and returns it to the getString() function.</p>
+
+                    <h5>displayResult()</h5>
+                    <p>This function checks if the boolean condition is True or False. 
+                    If it is True, it displays a result stating the inputted string is a palindrome and displays the string itself. 
+                    Else, it displays that it is not a palindrome and displays the string. 
+                    No matter what, the invisible class is removed from the HTML with the identifier "alert".</p>
                 </div>               
             </div>
         </div>
